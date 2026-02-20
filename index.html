@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Welcome to my websight!</title>
+
+<style>
+  body {
+    margin: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: monospace;
+  }
+
+  pre {
+    font-size: clamp(10px, 1.2vw, 16px);
+    line-height: 1;
+    color: transparent;
+
+    /* PERFECTLY TILEABLE RAINBOW */
+    background: repeating-linear-gradient(
+      to bottom,
+      hsl(0,100%,60%) 0px,
+      hsl(60,100%,60%) 40px,
+      hsl(120,100%,60%) 80px,
+      hsl(180,100%,60%) 120px,
+      hsl(240,100%,60%) 160px,
+      hsl(300,100%,60%) 200px,
+      hsl(360,100%,60%) 240px
+    );
+
+    background-size: 100% 240px;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    animation: flow 6s linear infinite;
+  }
+
+  @keyframes flow {
+    from {
+      background-position-y: 0px;
+    }
+    to {
+      background-position-y: -240px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<pre>
+               ..                              ..                                           ..                 ..                     _        
+  oec :  x .d88"                         . uW8"                                           dF                 dF                      u         
+ @88888   5888R                          `t888                                 .u    .   '88bu.             '88bu.                  88Nu.   u. 
+ 8"*88%   '888R        .u          u      8888   .        .u          u      .d88B :@8c  '*88888bu          '*88888bu        .u    '88888.o888c
+ 8b.       888R     ud8888.     us888u.   9888.z88N    ud8888.     us888u.  ="8888f8888r   ^"*8888N           ^"*8888N    ud8888.   ^8888  8888
+u888888>   888R   :888'8888. .@88 "8888"  9888  888E :888'8888. .@88 "8888"   4888>'88"   beWE "888L         beWE "888L :888'8888.   8888  8888
+ 8888R     888R   d888 '88%" 9888  9888   9888  888E d888 '88%" 9888  9888    4888> '     888E  888E         888E  888E d888 '88%"   8888  8888
+ 8888P     888R   8888.+"    9888  9888   9888  888E 8888.+"    9888  9888    4888>       888E  888E         888E  888E 8888.+"      8888  8888
+ *888>     888R   8888L      9888  9888   9888  888E 8888L      9888  9888   .d888L .+    888E  888F    .    888E  888F 8888L       .8888b.888P
+ 4888     .888B . '8888c. .+ 9888  9888  .8888  888" '8888c. .+ 9888  9888   ^"8888*"    .888N..888   .@8c  .888N..888  '8888c. .+   ^Y8888*"" 
+ '888     ^*888%   "88888%   "888*""888"  `%888*%"    "88888%   "888*""888"     "Y"       `"888*""   '%888"  `"888*""    "88888%       `Y"     
+  88R       "%       "YP'     ^Y"   ^Y'      "`         "YP'     ^Y"   ^Y'                   ""        ^*       ""         "YP'                
+  88>                                                                                                                                          
+  48                                                                                                                                           
+  '8                                                                                                                                           
+</pre>
+
+</body>
+</html>
