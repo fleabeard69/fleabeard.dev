@@ -88,6 +88,7 @@ u888888>   888R   :888'8888. .@88 "8888"  9888  888E :888'8888. .@88 "8888"   48
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     var ytPlayer;
+    var wantsSound = false;
 
     function onYouTubeIframeAPIReady() {
       ytPlayer = new YT.Player('player', {
@@ -104,17 +105,22 @@ u888888>   888R   :888'8888. .@88 "8888"  9888  888E :888'8888. .@88 "8888"   48
           onReady: (e) => {
             e.target.mute();
             e.target.playVideo();
+            if (wantsSound) {
+              e.target.unMute();
+              document.getElementById('sound-hint').style.display = 'none';
+            }
           }
         }
       });
     }
 
     document.addEventListener('click', () => {
+      wantsSound = true;
       if (ytPlayer && ytPlayer.unMute) {
         ytPlayer.unMute();
         document.getElementById('sound-hint').style.display = 'none';
       }
-    }, { once: true });
+    });
   </script>
 </body>
 </html>
