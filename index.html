@@ -61,7 +61,10 @@
     }
   
     #player {
-      display: none;
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
     }
 </style>
 </head>
@@ -91,9 +94,10 @@ u888888>   888R   :888'8888. .@88 "8888"  9888  888E :888'8888. .@88 "8888"   48
     var wantsSound = false;
 
     function onYouTubeIframeAPIReady() {
+      console.log('YT API ready');
       ytPlayer = new YT.Player('player', {
-        height: '0',
-        width: '0',
+        height: '1',
+        width: '1',
         videoId: 'IwLSrNu1ppI',
         playerVars: {
           autoplay: 1,
@@ -103,13 +107,16 @@ u888888>   888R   :888'8888. .@88 "8888"  9888  888E :888'8888. .@88 "8888"   48
         },
         events: {
           onReady: (e) => {
+            console.log('player ready, state:', e.target.getPlayerState());
             e.target.mute();
             e.target.playVideo();
             if (wantsSound) {
               e.target.unMute();
               document.getElementById('sound-hint').style.display = 'none';
             }
-          }
+          },
+          onError: (e) => console.log('YT error code:', e.data),
+          onStateChange: (e) => console.log('state change:', e.data)
         }
       });
     }
