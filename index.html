@@ -100,8 +100,6 @@ u888888>   888R   :888'8888. .@88 "8888"  9888  888E :888'8888. .@88 "8888"   48
         width: '1',
         videoId: 'IwLSrNu1ppI',
         playerVars: {
-          loop: 1,
-          playlist: 'IwLSrNu1ppI',
           controls: 0
         },
         events: {
@@ -110,6 +108,12 @@ u888888>   888R   :888'8888. .@88 "8888"  9888  888E :888'8888. .@88 "8888"   48
             if (wantsPlay) {
               ytPlayer.playVideo();
               document.getElementById('sound-hint').style.display = 'none';
+            }
+          },
+          onStateChange: (e) => {
+            if (e.data === YT.PlayerState.ENDED) {
+              ytPlayer.seekTo(0);
+              ytPlayer.playVideo();
             }
           }
         }
