@@ -59,10 +59,14 @@
       opacity: 0.8;
       pointer-events: none;
     }
+  
+    #player {
+      display: none;
+    }
 </style>
 </head>
 <body>
-  <audio id="bg-music" src=https://www.youtube.com/watch?v=IwLSrNu1ppI" loop autoplay muted></audio>
+  <div id="player"></div>
   <div id="sound-hint">click anywhere for sound</div>
 <pre>
                ..                              ..                                           ..                 ..                     _        
@@ -81,11 +85,35 @@ u888888>   888R   :888'8888. .@88 "8888"  9888  888E :888'8888. .@88 "8888"   48
   48                                                                                                                                           
   '8                                                                                                                                           
 </pre>
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script>
+    var ytPlayer;
+
+    function onYouTubeIframeAPIReady() {
+      ytPlayer = new YT.Player('player', {
+        height: '0',
+        width: '0',
+        videoId: 'https://www.youtube.com/watch?v=IwLSrNu1ppI',
+        playerVars: {
+          autoplay: 1,
+          loop: 1,
+          playlist: 'https://www.youtube.com/watch?v=IwLSrNu1ppI',
+          controls: 0
+        },
+        events: {
+          onReady: (e) => {
+            e.target.mute();
+            e.target.playVideo();
+          }
+        }
+      });
+    }
+
     document.addEventListener('click', () => {
-      const audio = document.getElementById('bg-music');
-      audio.muted = false;
-      document.getElementById('sound-hint').style.display = 'none';
+      if (ytPlayer && ytPlayer.unMute) {
+        ytPlayer.unMute();
+        document.getElementById('sound-hint').style.display = 'none';
+      }
     }, { once: true });
   </script>
 </body>
