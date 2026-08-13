@@ -49,10 +49,21 @@
       background-position-y: -240px;
     }
   }
+
+    #sound-hint {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      color: #888;
+      font-size: 12px;
+      opacity: 0.8;
+      pointer-events: none;
+    }
 </style>
 </head>
 <body>
-
+  <audio id="bg-music" src=https://www.youtube.com/watch?v=IwLSrNu1ppI" loop autoplay muted></audio>
+  <div id="sound-hint">click anywhere for sound</div>
 <pre>
                ..                              ..                                           ..                 ..                     _        
   oec :  x .d88"                         . uW8"                                           dF                 dF                      u         
@@ -70,6 +81,12 @@ u888888>   888R   :888'8888. .@88 "8888"  9888  888E :888'8888. .@88 "8888"   48
   48                                                                                                                                           
   '8                                                                                                                                           
 </pre>
-
+  <script>
+    document.addEventListener('click', () => {
+      const audio = document.getElementById('bg-music');
+      audio.muted = false;
+      document.getElementById('sound-hint').style.display = 'none';
+    }, { once: true });
+  </script>
 </body>
 </html>
