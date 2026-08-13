@@ -91,43 +91,38 @@ u888888>   888R   :888'8888. .@88 "8888"  9888  888E :888'8888. .@88 "8888"   48
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     var ytPlayer;
-    var wantsSound = false;
+    var playerReady = false;
+    var wantsPlay = false;
 
     function onYouTubeIframeAPIReady() {
-      console.log('YT API ready');
       ytPlayer = new YT.Player('player', {
         height: '1',
         width: '1',
         videoId: 'IwLSrNu1ppI',
         playerVars: {
-          autoplay: 1,
           loop: 1,
           playlist: 'IwLSrNu1ppI',
           controls: 0
         },
         events: {
-          onReady: (e) => {
-            console.log('player ready, state:', e.target.getPlayerState());
-            e.target.mute();
-            e.target.playVideo();
-            if (wantsSound) {
-              e.target.unMute();
+          onReady: () => {
+            playerReady = true;
+            if (wantsPlay) {
+              ytPlayer.playVideo();
               document.getElementById('sound-hint').style.display = 'none';
             }
-          },
-          onError: (e) => console.log('YT error code:', e.data),
-          onStateChange: (e) => console.log('state change:', e.data)
+          }
         }
       });
     }
 
     document.addEventListener('click', () => {
-      wantsSound = true;
-      if (ytPlayer && ytPlayer.unMute) {
-        ytPlayer.unMute();
+      wantsPlay = true;
+      if (playerReady) {
+        ytPlayer.playVideo();
         document.getElementById('sound-hint').style.display = 'none';
       }
-    });
+    }, { once: true });
   </script>
 </body>
 </html>
