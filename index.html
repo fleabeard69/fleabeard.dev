@@ -59,18 +59,12 @@
       opacity: 0.8;
       pointer-events: none;
     }
-  
-    #player {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-    }
 </style>
 </head>
 <body>
-  <div id="player"></div>
-  <div id="sound-hint">click anywhere for sound</div>
+<div id="sound-hint">click anywhere for sound</div>
+
+<audio id="music" src="dance.mp3" loop></audio>
 <pre>
                ..                              ..                                           ..                 ..                     _        
   oec :  x .d88"                         . uW8"                                           dF                 dF                      u         
@@ -88,45 +82,14 @@ u888888>   888R   :888'8888. .@88 "8888"  9888  888E :888'8888. .@88 "8888"   48
   48                                                                                                                                           
   '8                                                                                                                                           
 </pre>
-  <script src="https://www.youtube.com/iframe_api"></script>
   <script>
-    var ytPlayer;
-    var playerReady = false;
-    var wantsPlay = false;
+  const music = document.getElementById('music');
+  const soundHint = document.getElementById('sound-hint');
 
-    function onYouTubeIframeAPIReady() {
-      ytPlayer = new YT.Player('player', {
-        height: '1',
-        width: '1',
-        videoId: 'IwLSrNu1ppI',
-        playerVars: {
-          controls: 0
-        },
-        events: {
-          onReady: () => {
-            playerReady = true;
-            if (wantsPlay) {
-              ytPlayer.playVideo();
-              document.getElementById('sound-hint').style.display = 'none';
-            }
-          },
-          onStateChange: (e) => {
-            if (e.data === YT.PlayerState.ENDED) {
-              ytPlayer.seekTo(0);
-              ytPlayer.playVideo();
-            }
-          }
-        }
-      });
-    }
-
-    document.addEventListener('click', () => {
-      wantsPlay = true;
-      if (playerReady) {
-        ytPlayer.playVideo();
-        document.getElementById('sound-hint').style.display = 'none';
-      }
-    }, { once: true });
-  </script>
+  document.addEventListener('click', () => {
+    music.play();
+    soundHint.style.display = 'none';
+  }, { once: true });
+</script>
 </body>
 </html>
