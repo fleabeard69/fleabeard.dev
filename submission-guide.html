@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photoclean App Store Submission</title>
+<style>
+  :root {
+    --bg:#f5f5f7; --card:#fff; --fg:#1d1d1f; --muted:#6e6e73; --line:#e3e3e8;
+    --accent:#426AF2; --accent-soft:#e8eeff; --warn:#b25000; --warn-soft:#fff3e6; --ok:#1f8a3b;
+    --code:#f2f2f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:#0f0f11; --card:#1a1a1d; --fg:#f2f2f7; --muted:#a1a1a8; --line:#2d2d31;
+      --accent:#7c97ff; --accent-soft:#1d2546; --warn:#ffb15c; --warn-soft:#33240f; --ok:#5fd37c; --code:#232327;
+    }
+  }
+  * { box-sizing:border-box; }
+  body { background:var(--bg); color:var(--fg); margin:0; font:16px/1.55 -apple-system, BlinkMacSystemFont, "Inter", system-ui, sans-serif; }
+  .wrap { max-width:860px; margin:0 auto; padding:40px 16px 100px; }
+  h1 { font-size:34px; line-height:1.15; margin:0 0 8px; letter-spacing:-.02em; }
+  .lede { color:var(--muted); margin:0 0 28px; max-width:640px; }
+  nav.toc { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px; }
+  nav.toc a { text-decoration:none; color:var(--fg); background:var(--card); border:1px solid var(--line); border-radius:999px; padding:5px 12px; font-size:14px; }
+  nav.toc a:hover { border-color:var(--accent); }
+  section.step { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px; margin:0 0 20px; }
+  .step h2 { margin:0 0 4px; font-size:21px; display:flex; gap:12px; align-items:baseline; }
+  .num { flex:none; width:30px; height:30px; border-radius:50%; background:var(--accent); color:#fff; font-size:15px; display:inline-grid; place-items:center; transform:translateY(-2px); }
+  .where { color:var(--muted); font-size:14px; margin:0 0 16px; }
+  .field { margin:16px 0; }
+  .field-head { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:6px; }
+  .label { font-weight:600; font-size:15px; }
+  .count { color:var(--muted); font-size:12px; font-variant-numeric:tabular-nums; }
+  .value { background:var(--code); border:1px solid var(--line); border-radius:10px; padding:10px 12px; white-space:pre-wrap; word-break:break-word; font:14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  button.copy { font:inherit; font-size:13px; border:1px solid var(--line); background:var(--card); color:var(--accent); border-radius:8px; padding:3px 10px; cursor:pointer; }
+  button.copy.done { color:var(--ok); }
+  .answer { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 16px; border-top:1px solid var(--line); padding:9px 0; font-size:15px; }
+  .answer:first-of-type { border-top:0; }
+  .answer b { font-weight:600; text-align:right; }
+  .note { background:var(--accent-soft); border-radius:10px; padding:10px 14px; font-size:14px; margin:14px 0 0; }
+  .warn { background:var(--warn-soft); color:var(--fg); border-left:3px solid var(--warn); border-radius:8px; padding:10px 14px; font-size:14px; margin:14px 0 0; }
+  .shots { display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:10px; margin-top:12px; }
+  .shots figure { margin:0; }
+  .shots img { width:100%; border-radius:10px; border:1px solid var(--line); display:block; }
+  .shots figcaption { font-size:11px; color:var(--muted); margin-top:4px; word-break:break-all; }
+  ol.how { margin:8px 0 0; padding-left:20px; } ol.how li { margin:4px 0; }
+  code { background:var(--code); border-radius:5px; padding:1px 5px; font-size:.9em; }
+  @media (max-width:640px) {
+    .shots { grid-template-columns:repeat(3, minmax(0,1fr)); }
+    .answer { grid-template-columns:1fr; } .answer b { text-align:left; }
+    section.step { padding:18px; }
+    h1 { font-size:28px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Photoclean: App Store submission</h1>
+  <p class="lede">Go through these steps in order in App Store Connect. Every field has the exact text to paste. Replace anything in <code>[BRACKETS]</code> with your own details before you paste it.</p>
+
+  <nav class="toc">
+    <a href="#s0">0 · Host pages</a><a href="#s1">1 · Screenshots</a><a href="#s2">2 · Text</a><a href="#s3">3 · Build</a>
+    <a href="#s4">4 · General info</a><a href="#s5">5 · App Review</a><a href="#s6">6 · Privacy</a><a href="#s7">7 · Age rating</a>
+    <a href="#s8">8 · Pricing</a><a href="#s9">9 · Encryption</a><a href="#s10">10 · Submit</a>
+  </nav>
+
+  <section class="step" id="s0">
+    <h2><span class="num">0</span>Put the privacy policy and support pages online</h2>
+    <p class="where">Do this first. Apple needs both links, and they must be public web pages.</p>
+    <p>Two ready-made pages are in the same folder as this guide: <code>privacy-policy.html</code> and <code>support.html</code>. Open each one and replace <code>[CONTACT EMAIL]</code> and <code>[OPERATOR NAME]</code> (whoever runs the Immich server). Then put both pages online in one of these ways:</p>
+    <ol class="how">
+      <li><b>Your own server (easiest if you run massgrave.cloud):</b> serve them at, for example, <code>https://massgrave.cloud/photoclean/privacy</code> and <code>/photoclean/support</code>.</li>
+      <li><b>GitHub Pages (free):</b> create a public repository, upload both files, then turn on Settings → Pages. Your links will look like <code>https://[username].github.io/photoclean/privacy-policy.html</code>.</li>
+    </ol>
+    <p class="note">Open both links in a private browser window to make sure they load without a login.</p>
+  </section>
+
+  <section class="step" id="s1">
+    <h2><span class="num">1</span>Screenshots</h2>
+    <p class="where">App Store Connect → your app → <b>iOS App 1.0</b> → Previews and Screenshots → <b>iPhone with Dynamic Island (medium display)</b></p>
+    <p>Drag in all five, in this order. They are 1206 × 2622 PNGs, in the <code>screenshots-6.3in</code> folder. Apple shrinks them to fit smaller iPhones automatically. Your app is iPhone-only, so there's no iPad slot to fill.</p>
+    <div class="shots">
+      <figure><img src="screenshots-6.3in/01-swipe-to-keep.png" alt="Swipe right to keep"><figcaption>01-swipe-to-keep.png</figcaption></figure>
+      <figure><img src="screenshots-6.3in/02-clear-the-blurry-ones.png" alt="Clear out the blurry ones"><figcaption>02-clear-the-blurry-ones.png</figcaption></figure>
+      <figure><img src="screenshots-6.3in/03-backed-up.png" alt="Every photo backed up"><figcaption>03-backed-up.png</figcaption></figure>
+      <figure><img src="screenshots-6.3in/04-free-up-space.png" alt="Free up space in one tap"><figcaption>04-free-up-space.png</figcaption></figure>
+      <figure><img src="screenshots-6.3in/05-sign-in.png" alt="Sign in and start swiping"><figcaption>05-sign-in.png</figcaption></figure>
+    </div>
+    <p class="note">The screens are redrawn from the app's own layout code, with illustrated pictures standing in for real photos. That's normal for App Store screenshots, as long as they show how the app really works, and these do. If you'd rather use real captures, run the app in the iPhone 16 Pro Max (or 17 Pro Max) simulator and press ⌘S. Those come out at the same size.</p>
+  </section>
+
+  <section class="step" id="s2">
+    <h2><span class="num">2</span>Store listing text</h2>
+    <p class="where">Same page (iOS App 1.0), right under the screenshots</p>
+    <div data-field="Promotional Text" data-max="170">Sort your camera roll one swipe at a time. Right to keep, left to delete, and every photo and video is backed up to your Immich account first.</div>
+    <div data-field="Description" data-max="4000">Photoclean makes clearing out your camera roll quick, and safe.
+
+SWIPE TO SORT
+See one photo or video at a time. Swipe right (or tap Keep) to keep it. Swipe left (or tap Delete) to get rid of it. Tap the play button to watch a video before you decide.
+
+BACKED UP FIRST
+While you swipe, Photoclean quietly backs up every photo and video on your iPhone to your Immich account, including overnight while your phone charges. Anything you delete goes to your Immich trash, not straight into the void.
+
+FREE UP SPACE
+When you're ready, tap Clean Up to remove everything you deleted from your iPhone. iOS asks you to confirm first, so nothing disappears by surprise.
+
+CHANGED YOUR MIND?
+Tap Undo to bring back the last thing you deleted. Older deletes stay in your Immich trash for 30 days by default.
+
+PRIVATE BY DESIGN
+No ads, no analytics, no tracking. Your photos go to your Immich account and nowhere else.
+
+Photoclean needs an Immich account on the server it was built for. Sign in with the email and password you were given.
+
+Photoclean is an independent app and is not affiliated with the Immich project.</div>
+    <div data-field="Keywords" data-max="100">photo cleaner,swipe,delete photos,backup,cleanup,storage,camera roll,declutter,gallery,videos</div>
+    <div data-field="Support URL" data-max="0">[YOUR SUPPORT PAGE LINK FROM STEP 0]</div>
+    <div data-field="Marketing URL (optional, leave blank)" data-max="0"></div>
+    <div data-field="Copyright" data-max="0">2026 [YOUR NAME OR COMPANY]</div>
+    <p class="note">The word "Immich" isn't in the keywords on purpose. Apple can reject keywords that use another project's name. Mentioning it in the description to explain what the app works with is fine.</p>
+  </section>
+
+  <section class="step" id="s3">
+    <h2><span class="num">3</span>Pick the build</h2>
+    <p class="where">Same page → scroll to <b>Build</b> → click <b>+</b> (or "Add Build")</p>
+    <p>Choose the build you uploaded (version 1.0). If there's no + button or the list is empty, the build is still processing. Wait for Apple's "has completed processing" email and refresh the page.</p>
+    <p class="note">If it asks about encryption when you add the build, jump to step 9 for the answer.</p>
+  </section>
+
+  <section class="step" id="s4">
+    <h2><span class="num">4</span>General app information</h2>
+    <p class="where">Left sidebar → <b>App Information</b></p>
+    <div data-field="Name" data-max="30">Photoclean</div>
+    <div data-field="Subtitle" data-max="30">Swipe to keep, back up first</div>
+    <div class="answer"><span>Primary category</span><b>Photo &amp; Video</b></div>
+    <div class="answer"><span>Secondary category</span><b>Utilities</b></div>
+    <div class="answer"><span>Content Rights: "Does your app contain, show, or access third-party content?"</span><b>No</b></div>
+    <p class="note">If the name "Photoclean" is already taken, use <code>Photoclean: Swipe &amp; Back Up</code> (27 characters). The name on the phone's home screen stays "Photoclean" either way.</p>
+  </section>
+
+  <section class="step" id="s5">
+    <h2><span class="num">5</span>App Review Information (the most important step)</h2>
+    <p class="where">iOS App 1.0 page → scroll to the bottom → <b>App Review Information</b></p>
+    <p>Apple's reviewer can't get past your sign-in screen without an account. <b>First, create a real test account</b> on <code>immich.massgrave.cloud</code>, for example <code>appreview@[your domain]</code>. Make sure it can sign in, and leave it signed up. The reviewer's test device will back up its photos to this account and delete some of them, so don't use your own account.</p>
+    <div class="answer"><span>Sign-in required</span><b>✓ Checked</b></div>
+    <div data-field="User name" data-max="0">[TEST ACCOUNT EMAIL]</div>
+    <div data-field="Password" data-max="0">[TEST ACCOUNT PASSWORD]</div>
+    <div class="answer"><span>Contact first name / last name / phone / email</span><b>Your own details</b></div>
+    <div data-field="Notes" data-max="4000">Photoclean backs up the iPhone photo library to the user's Immich account (a self-hosted photo server at immich.massgrave.cloud) and lets them swipe through their photos to keep or delete them.
+
+HOW TO TEST
+1. Sign in with the demo account above.
+2. Tap Continue and choose "Allow Full Access" to the photo library. The app needs full access to back up the whole library.
+3. Swipe right (or tap Keep) to keep a photo. Swipe left (or tap Delete) to delete it. Deleted items are moved to the Immich account's trash. The Undo button brings the last one back.
+4. Tap Clean Up (top right) to remove deleted items from the device. iOS shows its own confirmation before anything is removed.
+5. The account menu (top left) has Sign Out.
+
+NOTES
+- Backup runs in the background (URLSession background uploads plus a BGProcessingTask that runs while charging). Nothing in the app needs to be tapped to start it.
+- Accounts are created by the server administrator. There is no sign-up inside the app, so in-app account deletion doesn't apply. Users can ask for account deletion through the support page.
+- The app has no ads, analytics, tracking, or in-app purchases.</div>
+    <div class="answer"><span>Attachment</span><b>None needed</b></div>
+    <div class="warn"><b>A possible snag:</b> Apple sometimes questions apps that only work for people who were given an account (guideline 3.2, "limited audience"). The notes above explain the setup honestly. If Apple pushes back anyway, the usual fix is to ask for <b>Unlisted App Distribution</b> (the app only shows up for people with the direct link) instead of a public listing. Mention whether anyone can request an account on your server. That helps your case.</div>
+  </section>
+
+  <section class="step" id="s6">
+    <h2><span class="num">6</span>App Privacy</h2>
+    <p class="where">Left sidebar → <b>App Privacy</b></p>
+    <div data-field="Privacy Policy URL" data-max="0">[YOUR PRIVACY POLICY LINK FROM STEP 0]</div>
+    <p>Click <b>Get Started</b> (or Edit) under Data Types and answer:</p>
+    <div class="answer"><span>Do you or your third-party partners collect data from this app?</span><b>Yes, we collect data</b></div>
+    <div class="answer"><span>Data types to check (only these two)</span><b>Contact Info → Email Address<br>User Content → Photos or Videos</b></div>
+    <p style="margin-top:14px">Then, for <b>each</b> of the two types, Apple asks three questions. The answers are the same for both:</p>
+    <div class="answer"><span>How is this data used?</span><b>App Functionality (only)</b></div>
+    <div class="answer"><span>Is this data linked to the user's identity?</span><b>Yes</b></div>
+    <div class="answer"><span>Is this data used for tracking?</span><b>No</b></div>
+    <p class="note">These match the privacy file already built into the app (<code>PrivacyInfo.xcprivacy</code>). When you're done, click <b>Publish</b> at the top right of the App Privacy page. It's easy to miss.</p>
+  </section>
+
+  <section class="step" id="s7">
+    <h2><span class="num">7</span>Age rating</h2>
+    <p class="where">App Information → Age Rating → <b>Edit</b></p>
+    <div class="answer"><span>Every content question (violence, mature themes, medical, gambling, etc.)</span><b>None</b></div>
+    <div class="answer"><span>Unrestricted web access</span><b>No</b></div>
+    <div class="answer"><span>User-generated content shared with others</span><b>No</b> <span></span></div>
+    <div class="answer"><span>Messaging / chat, advertising, parental controls, age assurance</span><b>No</b></div>
+    <div class="answer"><span>Result</span><b>4+</b></div>
+    <p class="note">The answer to "user-generated content" is No because your photos are private to your own account. Nothing is shown to other people.</p>
+  </section>
+
+  <section class="step" id="s8">
+    <h2><span class="num">8</span>Pricing and availability</h2>
+    <p class="where">Left sidebar → <b>Pricing and Availability</b></p>
+    <div class="answer"><span>Price</span><b>Free (USD 0.00)</b></div>
+    <div class="answer"><span>Availability</span><b>All countries, or just yours</b></div>
+    <div class="answer"><span>App Distribution Methods</span><b>Public (or Unlisted, see step 5)</b></div>
+    <p class="note">If it asks about the EU Digital Services Act "trader status", choose <b>non-trader</b> if this is a personal, free project. If you're a business, choose trader. Trader status shows your address and phone number on the EU store page.</p>
+  </section>
+
+  <section class="step" id="s9">
+    <h2><span class="num">9</span>Encryption (export compliance)</h2>
+    <p class="where">Shown when you add the build or submit, as "App Encryption Documentation"</p>
+    <div class="answer"><span>What type of encryption algorithms does your app implement?</span><b>None of the algorithms mentioned above</b></div>
+    <p class="note">This is correct because the app only uses Apple's built-in encryption: HTTPS, Keychain, and CryptoKit's SHA-1 for file checksums. That's exempt, and no documents are needed.</p>
+  </section>
+
+  <section class="step" id="s10">
+    <h2><span class="num">10</span>Submit</h2>
+    <p class="where">iOS App 1.0 page → top right</p>
+    <ol class="how">
+      <li>Click <b>Save</b>.</li>
+      <li>Click <b>Add for Review</b>. If anything is still missing, Apple lists it in red. Fix it and click again.</li>
+      <li>On the next screen, click <b>Submit for Review</b>.</li>
+    </ol>
+    <p>The status changes to <b>Waiting for Review</b>, then <b>In Review</b> (usually within 1 to 2 days), then <b>Pending Developer Release</b> or <b>Ready for Distribution</b>. If Apple has questions, they show up in <b>App Review → Messages</b> and you get an email.</p>
+  </section>
+</div>
+
+<script>
+  // Turn each data-field block into a labelled copy box with a character count.
+  document.querySelectorAll('[data-field]').forEach(el => {
+    const value = el.textContent, max = +el.dataset.max;
+    const wrap = document.createElement('div'); wrap.className = 'field';
+    const head = document.createElement('div'); head.className = 'field-head';
+    const label = document.createElement('span'); label.className = 'label'; label.textContent = el.dataset.field;
+    const right = document.createElement('span'); right.style.display = 'flex'; right.style.gap = '10px'; right.style.alignItems = 'center';
+    if (max) { const c = document.createElement('span'); c.className = 'count'; c.textContent = `${value.length} / ${max}`; right.append(c); }
+    if (value) {
+      const b = document.createElement('button'); b.className = 'copy'; b.textContent = 'Copy';
+      b.onclick = async () => {
+        try { await navigator.clipboard.writeText(value); }
+        catch { const r = document.createRange(); r.selectNodeContents(box); const s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); }
+        b.textContent = 'Copied'; b.classList.add('done'); setTimeout(() => { b.textContent = 'Copy'; b.classList.remove('done'); }, 1500);
+      };
+      right.append(b);
+    }
+    head.append(label, right);
+    const box = document.createElement('div'); box.className = 'value'; box.textContent = value || '(leave blank)';
+    wrap.append(head, box); el.replaceWith(wrap);
+  });
+</script>
+</body>
+</html>
